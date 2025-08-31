@@ -24,6 +24,9 @@
     "fetchRecipes": [
         "fetch.xsh"
     ],
+    "patchRecipes": [
+        "foreign-libs.xsh"
+    ],
     "buildRecipes": [
         "build.xsh"
     ],
