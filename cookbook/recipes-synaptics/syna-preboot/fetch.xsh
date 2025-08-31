@@ -55,6 +55,8 @@ cp @(f"{_path}/{_MACHINE}/preboot.subimg") @(f"{_BUILD_PATH}/tmp/{_MACHINE}/syna
 cp @(f"{_path}/{_MACHINE}/tee.subimg") @(f"{_BUILD_PATH}/tmp/{_MACHINE}/syna-preboot/tee.subimg")
 cp @(f"{_path}/{_MACHINE}/sm.bin") @(f"{_BUILD_PATH}/tmp/{_MACHINE}/syna-preboot/sm.bin")
 mkdir -p @(f"{_BUILD_PATH}/tmp/{_MACHINE}/output_sm/bin")
+mkdir -p @(f"{_BUILD_PATH}/tmp/{_MACHINE}/su-boot")
+mkdir -p @(f"{_BUILD_PATH}/tmp/{_MACHINE}/u-boot")
 cp @(f"{_path}/{_MACHINE}/sm.bin") @(f"{_BUILD_PATH}/tmp/{_MACHINE}/su-boot/sm.bin")
 cp @(f"{_path}/{_MACHINE}/sm.bin") @(f"{_BUILD_PATH}/tmp/{_MACHINE}/u-boot/sm.bin")
 
