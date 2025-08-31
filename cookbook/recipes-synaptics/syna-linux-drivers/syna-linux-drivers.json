@@ -1,0 +1,21 @@
+{
+    "name": "syna-linux-drivers",
+    "type": "config",
+    "priority": 0,
+    "support": [
+        "linux/arm64"
+    ],
+    "source": "https://github.com/gaiaBuildSystem/syna-linux-drivers.git",
+    "ref": {
+        "linux/arm64": "77c96a9f445b904efe5d657065b824c6bc7ce88d"
+    },
+    "hostDeps": [
+        "git"
+    ],
+    "fetchRecipes": [
+        "fetch.xsh"
+    ],
+    "patchRecipes": [
+        "cp-out-tree-to-tree.xsh"
+    ]
+}

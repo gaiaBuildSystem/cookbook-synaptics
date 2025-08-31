@@ -1,0 +1,15 @@
+{
+    "name": "syna-configs",
+    "type": "config",
+    "priority": 0,
+    "support": [
+        "linux/arm64"
+    ],
+    "source": "https://github.com/gaiaBuildSystem/syna-configs.git",
+    "ref": {
+        "linux/arm64": "5f7ed3cd36be9e9b72fc1a4af3e533d56889bad1"
+    },
+    "fetchRecipes": [
+        "fetch.xsh"
+    ]
+}

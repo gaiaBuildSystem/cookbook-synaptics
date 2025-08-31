@@ -1,0 +1,25 @@
+{
+    "name": "su-boot",
+    "type": "bootloader",
+    "priority": 0,
+    "support": [
+        "linux/arm64"
+    ],
+    "source": "https://github.com/gaiaBuildSystem/u-boot",
+    "ref": {
+        "linux/arm64": "6e6daa33749bedd63b2a03897c6780d1b728f479"
+    },
+    "hostDeps": [
+        "git",
+        "xxd"
+    ],
+    "fetchRecipes": [
+        "fetch.xsh"
+    ],
+    "buildRecipes": [
+        "build.ts"
+    ],
+    "deployPureRecipes": [
+        "deploy.xsh"
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "name": "syna-preboot",
+    "type": "config",
+    "priority": 0,
+    "support": [
+        "linux/arm64"
+    ],
+    "source": "https://github.com/gaiaBuildSystem/syna-preboot-prebuilts.git",
+    "ref": {
+        "linux/arm64": "5fdd2fd7d9cb992908e5f05eda81ecc58970a3c0"
+    },
+    "fetchRecipes": [
+        "fetch.xsh"
+    ]
+}

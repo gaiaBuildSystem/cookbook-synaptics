@@ -1,0 +1,33 @@
+{
+    "name": "syna-tools",
+    "type": "config",
+    "priority": 0,
+    "support": [
+        "linux/arm64"
+    ],
+    "source": "https://github.com/gaiaBuildSystem/syna-tools.git",
+    "ref": {
+        "linux/arm64": "82939713d82f930b9b7e3e695b329a415316d717"
+    },
+    "env": {
+        "CONFIG_EMMC_BLOCK_SIZE": "524288",
+        "CONFIG_EMMC_TOTAL_SIZE": "15552479232"
+    },
+    "hostDeps": [
+        "binutils",
+        "build-essential",
+        "cmake",
+        "libssl-dev",
+        "rsync",
+        "android-sdk-libsparse-utils"
+    ],
+    "fetchRecipes": [
+        "fetch.xsh"
+    ],
+    "buildRecipes": [
+        "build.xsh"
+    ],
+    "bundleRecipes": [
+        "prepare-emmc.xsh"
+    ]
+}

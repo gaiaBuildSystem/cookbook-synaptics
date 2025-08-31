@@ -1,0 +1,16 @@
+{
+    "name": "syna-fastlogo",
+    "type": "config",
+    "priority": 0,
+    "support": [
+        "linux/arm64"
+    ],
+    "hostDeps": [
+        "ffmpeg",
+        "gzip",
+        "xxd"
+    ],
+    "buildRecipes": [
+        "build.xsh"
+    ]
+}
