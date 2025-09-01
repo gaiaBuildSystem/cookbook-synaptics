@@ -53,7 +53,7 @@ if os.path.exists(f"{_REPO_PATH}/fastlogo.subimg.gz"):
 
 # now create the fastlogo
 os.chdir(f"{_REPO_TOOLS}/tools/bin")
-./create_fastlogo_rgb24.sh \
+./create_fastlogo.sh \
     -i @(_path)/splash.bmp \
     -o @(f"{_REPO_PATH}")/fastlogo.subimg
 

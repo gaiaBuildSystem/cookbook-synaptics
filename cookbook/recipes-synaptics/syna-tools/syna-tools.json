@@ -7,7 +7,7 @@
     ],
     "source": "https://github.com/gaiaBuildSystem/syna-tools.git",
     "ref": {
-        "linux/arm64": "82939713d82f930b9b7e3e695b329a415316d717"
+        "linux/arm64": "96ca632ce88989bc2f1c39950c76833a158eeb95"
     },
     "env": {
         "CONFIG_EMMC_BLOCK_SIZE": "524288",
