@@ -45,18 +45,46 @@ _REPO_TOOLS = f"{_BUILD_PATH}/tmp/{_MACHINE}/syna-tools"
 # make sure the repo path exists
 mkdir -p @(_REPO_PATH)
 
-# copy the create_fastlogo script from tools
-cp @(_REPO_TOOLS)/tools/bin/create_fastlogo.sh @(_REPO_PATH)/
-
 # cleanup if already exists
 if os.path.exists(f"{_REPO_PATH}/fastlogo.subimg.gz"):
     rm @(_REPO_PATH)/fastlogo.subimg.gz
 
 # now create the fastlogo
-os.chdir(_REPO_PATH)
-./create_fastlogo.sh \
+os.chdir(f"{_REPO_TOOLS}/tools/bin")
+./create_fastlogo_rgb24.sh \
     -i @(_path)/splash.bmp \
     -o fastlogo.subimg
+
+# the synaptics creates the fastlogo.subimg already zipped
+# and then it need to be used not zipped 🤦‍♂️
+gunzip -f fastlogo.subimg.gz
+
+# create in_extras
+./in_extras.py \
+    "FASTLOGO" \
+    @(f"{_REPO_PATH}")/in_fastlogo_extras.bin 0x00000001
+
+# sign
+sudo \
+    -E \
+    ./gen_x_secure_image \
+        --chip-name=dolphin \
+        --chip-rev=A0 \
+        --img_type=FASTLOGO \
+        --key_type=ree \
+        --length=0x0 \
+        --extras=@(f"{_REPO_PATH}")/in_fastlogo_extras.bin \
+        --workdir-security-tools=@(f"{_REPO_TOOLS}/tools/bin") \
+        --workdir-security-keys=@(f"{_path}/{_MACHINE}") \
+        --in_payload=@(f"{_REPO_PATH}")/fastlogo.subimg \
+        --out_store=@(f"{_DEPLOY_DIR}/fastlogo_en.subimg")
+
+# bootloader.subimg
+sudo -E ./prepend_image_info.sh \
+        @(f"{_DEPLOY_DIR}/fastlogo_en.subimg") \
+        @(f"{_DEPLOY_DIR}/fastlogo.subimg")
+
+sudo gzip -f @(_DEPLOY_DIR)/fastlogo.subimg
 
 # copy it to the deploy path
 sudo mkdir -p @(_DEPLOY_DIR)
