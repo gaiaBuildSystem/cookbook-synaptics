@@ -44,10 +44,12 @@ _REPO_TOOLS = f"{_BUILD_PATH}/tmp/{_MACHINE}/syna-tools"
 
 # make sure the repo path exists
 mkdir -p @(_REPO_PATH)
+sudo mkdir -p @(_DEPLOY_DIR)
 
 # cleanup if already exists
 if os.path.exists(f"{_REPO_PATH}/fastlogo.subimg.gz"):
     rm @(_REPO_PATH)/fastlogo.subimg.gz
+    sudo rm @(_DEPLOY_DIR)/fastlogo.subimg.gz
 
 # now create the fastlogo
 os.chdir(f"{_REPO_TOOLS}/tools/bin")
@@ -85,10 +87,5 @@ sudo -E ./prepend_image_info.sh \
         @(f"{_DEPLOY_DIR}/fastlogo.subimg")
 
 sudo gzip -f @(_DEPLOY_DIR)/fastlogo.subimg
-
-# copy it to the deploy path
-sudo mkdir -p @(_DEPLOY_DIR)
-sudo cp fastlogo.subimg.gz @(_DEPLOY_DIR)/
-
 
 print("Building syna-fastlogo, OK", color=Color.WHITE, bg_color=BgColor.GREEN)
