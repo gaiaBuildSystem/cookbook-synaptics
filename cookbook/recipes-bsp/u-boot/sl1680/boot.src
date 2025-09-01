@@ -24,7 +24,7 @@ env set initrd_high 0xffffffffffffffff
 env set cma 524288000@1556086784
 # env set fdt_high 0xffffffffffffffff
 
-env set bootargs root=LABEL:gaia rootfstype=ext4
+env set bootargs root=LABEL:rootfs rootfstype=ext4
 env set bootargs ${bootargs} console=ttyS0,115200
 env set bootargs ${bootargs} logo.nologo vt.global_cursor_default=0
 env set bootargs ${bootargs} 8250.nr_uarts=1
