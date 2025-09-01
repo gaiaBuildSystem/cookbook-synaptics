@@ -53,11 +53,11 @@ if os.path.exists(f"{_REPO_PATH}/fastlogo.subimg.gz"):
 os.chdir(f"{_REPO_TOOLS}/tools/bin")
 ./create_fastlogo_rgb24.sh \
     -i @(_path)/splash.bmp \
-    -o fastlogo.subimg
+    -o @(f"{_REPO_PATH}")/fastlogo.subimg
 
 # the synaptics creates the fastlogo.subimg already zipped
 # and then it need to be used not zipped 🤦‍♂️
-gunzip -f fastlogo.subimg.gz
+gunzip -f @(f"{_REPO_PATH}")/fastlogo.subimg.gz
 
 # create in_extras
 ./in_extras.py \
