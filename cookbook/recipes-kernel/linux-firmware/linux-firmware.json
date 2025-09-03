@@ -5,10 +5,8 @@
     "support": [
         "linux/arm64"
     ],
-    "customData": {
-        "firmwares": [
-            "fw_bcm4375.bin"
-        ]
-    },
+    "deployRecipes": [
+        "cp-kernel-firmware.xsh"
+    ],
     "merge": true
 }
