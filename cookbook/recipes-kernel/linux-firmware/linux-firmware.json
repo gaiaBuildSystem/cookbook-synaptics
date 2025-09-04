@@ -5,6 +5,12 @@
     "support": [
         "linux/arm64"
     ],
+    "customData": {
+        "firmwares": [
+            "rgx.sh.29.14.108.208",
+            "rgx.fw.29.14.108.208"
+        ]
+    },
     "deployRecipes": [
         "cp-kernel-firmware.xsh"
     ],
