@@ -45,5 +45,12 @@ _LINUX_PATH = f"{_BUILD_PATH}/tmp/{_MACHINE}/linux/firmware"
 sudo mkdir -p @(_IMAGE_MNT_ROOT)/lib/firmware
 sudo cp -r @(_LINUX_PATH)/* @(_IMAGE_MNT_ROOT)/lib/firmware
 
+# mv the vendor content to the root
+sudo cp -r @(_IMAGE_MNT_ROOT)/lib/firmware/bcm/* @(_IMAGE_MNT_ROOT)/lib/firmware
+sudo cp -r @(_IMAGE_MNT_ROOT)/lib/firmware/mrvl/* @(_IMAGE_MNT_ROOT)/lib/firmware
+
+sudo rm -rf @(_IMAGE_MNT_ROOT)/lib/firmware/mrvl
+sudo rm -rf @(_IMAGE_MNT_ROOT)/lib/firmware/bcm
+
 
 print("Copying linux syna-firmware, OK", color=Color.WHITE, bg_color=BgColor.GREEN)
