@@ -174,9 +174,51 @@ sudo \
         300 \
         @(_DEPLOY_DIR)
 
+# create the eMMCimg folder
+sudo mkdir -p @(_DEPLOY_DIR)/eMMCimg
+sudo cp @(_path)/eMMCimg/* @(_DEPLOY_DIR)/eMMCimg/
+sudo mv @(_DEPLOY_DIR)/bl.subimg.gz @(_DEPLOY_DIR)/eMMCimg/
+sudo mv @(_DEPLOY_DIR)/boot.subimg.gz @(_DEPLOY_DIR)/eMMCimg/
+sudo mv @(_DEPLOY_DIR)/fastlogo.subimg.gz @(_DEPLOY_DIR)/eMMCimg/
+
+# copy the files that was wrote to the metadata
+_splitted_rootfs = []
+with open(f"{_DEPLOY_DIR}/metadata_rootfs.txt", "r") as f:
+    for line in f:
+        file = line.strip()
+        _file_replaced = file.replace('ota-rootfs', 'rootfs')
+
+        if os.path.isfile(file):
+            sudo mv @(file) @(_DEPLOY_DIR)/eMMCimg/@(_file_replaced)
+            _splitted_rootfs.append(_file_replaced)
+        else:
+            print(f"Warning: File {file} listed in metadata does not exist.", color=Color.YELLOW, bg_color=BgColor.RED)
+
+
+# replace the emmc_part_list.template with the actual rootfs size
+with open(f"{_path}/emmc_part_list.template", 'r') as file:
+    _filedata = file.read()
+    _filedata = _filedata.replace('{{ROOTFS_SIZE}}', str(_TOTAL_SIZE_MB))
+
+# create the file and set the content
+touch f"{_DEPLOY_DIR}/eMMCimg/emmc_part_list"
+with open(f"{_DEPLOY_DIR}/eMMCimg/emmc_part_list", 'w') as file:
+    file.write(_filedata)
+
+
+# also append on the emmc_image_list the rootfs files
+with open(f"{_DEPLOY_DIR}/eMMCimg/emmc_image_list", 'a') as file:
+    if len(_splitted_rootfs) == 0:
+        print("Warning: No rootfs parts were created.", color=Color.YELLOW, bg_color=BgColor.RED)
+    elif len(_splitted_rootfs) == 1:
+        file.write("rootfs.subimg.gz,sd8\n")
+    else:
+        for part in _splitted_rootfs:
+            file.write(f"{part},sd8\n")
+
 
 # always remove the non compressed .img
-sudo rm -rf @(_ROOTFS_IMG)
+sudo rm -f @(_ROOTFS_IMG)
 sudo rm -f @(_BOOT_IMG)
 
 
