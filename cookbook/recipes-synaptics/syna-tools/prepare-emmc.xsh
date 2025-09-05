@@ -187,12 +187,13 @@ with open(f"{_DEPLOY_DIR}/metadata_rootfs.txt", "r") as f:
     for line in f:
         file = line.strip()
         _file_replaced = file.replace('ota-rootfs', 'rootfs')
+        _file_absolute = os.path.join(_DEPLOY_DIR, file)
 
-        if os.path.isfile(file):
-            sudo mv @(file) @(_DEPLOY_DIR)/eMMCimg/@(_file_replaced)
+        if os.path.isfile(_file_absolute):
+            sudo mv @(_file_absolute) @(_DEPLOY_DIR)/eMMCimg/@(_file_replaced)
             _splitted_rootfs.append(_file_replaced)
         else:
-            print(f"Warning: File {file} listed in metadata does not exist.", color=Color.YELLOW, bg_color=BgColor.RED)
+            print(f"Warning: File {file} listed in metadata does not exist.", color=Color.WHITE, bg_color=BgColor.RED)
 
 
 # replace the emmc_part_list.template with the actual rootfs size
