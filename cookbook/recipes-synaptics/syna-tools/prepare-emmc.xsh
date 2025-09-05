@@ -197,7 +197,7 @@ with open(f"{_DEPLOY_DIR}/metadata_rootfs.txt", "r") as f:
 
 
 # replace the emmc_part_list.template with the actual rootfs size
-with open(f"{_path}/emmc_part_list.template", 'r') as file:
+with open(f"{_path}/eMMCimg/emmc_part_list.template", 'r') as file:
     _filedata = file.read()
     _filedata = _filedata.replace('{{ROOTFS_SIZE}}', str(_TOTAL_SIZE_MB))
 
@@ -206,6 +206,7 @@ touch f"{_DEPLOY_DIR}/eMMCimg/emmc_part_list"
 with open(f"{_DEPLOY_DIR}/eMMCimg/emmc_part_list", 'w') as file:
     file.write(_filedata)
 
+sudo rm -rf @(_DEPLOY_DIR)/eMMCimg/emmc_part_list.template
 
 # also append on the emmc_image_list the rootfs files
 with open(f"{_DEPLOY_DIR}/eMMCimg/emmc_image_list", 'a') as file:
