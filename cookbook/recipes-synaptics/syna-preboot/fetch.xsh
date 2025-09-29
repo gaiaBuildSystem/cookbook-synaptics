@@ -51,8 +51,7 @@ os.chdir(f"{_BUILD_PATH}/tmp/{_MACHINE}/syna-preboot")
 git checkout @(meta["ref"]["linux/arm64"])
 
 # make the assets acessible to the other repos
-if _MACHINE == "winglet":
-    _CPU_MACHINE = "sl1680"
+_CPU_MACHINE = _MACHINE
 
 cp @(f"{_path}/{_CPU_MACHINE}/preboot.subimg") @(f"{_BUILD_PATH}/tmp/{_MACHINE}/syna-preboot/preboot.subimg")
 cp @(f"{_path}/{_CPU_MACHINE}/tee.subimg") @(f"{_BUILD_PATH}/tmp/{_MACHINE}/syna-preboot/tee.subimg")
