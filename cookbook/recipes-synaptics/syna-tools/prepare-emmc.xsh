@@ -176,7 +176,9 @@ sudo \
 
 # create the eMMCimg folder
 sudo mkdir -p @(_DEPLOY_DIR)/eMMCimg
-sudo cp @(_path)/eMMCimg/* @(_DEPLOY_DIR)/eMMCimg/
+
+sudo cp @(_path)/@(f"eMMCimg_{_MACHINE}")/* @(_DEPLOY_DIR)/eMMCimg/
+
 sudo mv @(_DEPLOY_DIR)/bl.subimg.gz @(_DEPLOY_DIR)/eMMCimg/
 sudo mv @(_DEPLOY_DIR)/boot.subimg.gz @(_DEPLOY_DIR)/eMMCimg/
 sudo mv @(_DEPLOY_DIR)/fastlogo.subimg.gz @(_DEPLOY_DIR)/eMMCimg/
