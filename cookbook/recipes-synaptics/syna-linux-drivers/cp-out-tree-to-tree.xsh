@@ -44,6 +44,6 @@ _TARGET = f"{_BUILD_PATH}/tmp/{_MACHINE}/linux/drivers/synaptics"
 
 mkdir -p @(f"{_TARGET}")
 # cp recursive all from inside _REPO to _TARGET
-sudo cp -r @(f"{_REPO}/.") @(f"{_TARGET}")
+cp -r @(f"{_REPO}/.") @(f"{_TARGET}")
 
 print("Patching syna-linux-drivers, OK", color=Color.WHITE, bg_color=BgColor.GREEN)
