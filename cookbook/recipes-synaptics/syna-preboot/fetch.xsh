@@ -51,14 +51,17 @@ os.chdir(f"{_BUILD_PATH}/tmp/{_MACHINE}/syna-preboot")
 git checkout @(meta["ref"]["linux/arm64"])
 
 # make the assets acessible to the other repos
-cp @(f"{_path}/{_MACHINE}/preboot.subimg") @(f"{_BUILD_PATH}/tmp/{_MACHINE}/syna-preboot/preboot.subimg")
-cp @(f"{_path}/{_MACHINE}/tee.subimg") @(f"{_BUILD_PATH}/tmp/{_MACHINE}/syna-preboot/tee.subimg")
-cp @(f"{_path}/{_MACHINE}/sm.bin") @(f"{_BUILD_PATH}/tmp/{_MACHINE}/syna-preboot/sm.bin")
+if _MACHINE == "winglet":
+    _CPU_MACHINE = "sl1680"
+
+cp @(f"{_path}/{_CPU_MACHINE}/preboot.subimg") @(f"{_BUILD_PATH}/tmp/{_MACHINE}/syna-preboot/preboot.subimg")
+cp @(f"{_path}/{_CPU_MACHINE}/tee.subimg") @(f"{_BUILD_PATH}/tmp/{_MACHINE}/syna-preboot/tee.subimg")
+cp @(f"{_path}/{_CPU_MACHINE}/sm.bin") @(f"{_BUILD_PATH}/tmp/{_MACHINE}/syna-preboot/sm.bin")
 mkdir -p @(f"{_BUILD_PATH}/tmp/{_MACHINE}/output_sm/bin")
 mkdir -p @(f"{_BUILD_PATH}/tmp/{_MACHINE}/su-boot")
 mkdir -p @(f"{_BUILD_PATH}/tmp/{_MACHINE}/u-boot")
-cp @(f"{_path}/{_MACHINE}/sm.bin") @(f"{_BUILD_PATH}/tmp/{_MACHINE}/su-boot/sm.bin")
-cp @(f"{_path}/{_MACHINE}/sm.bin") @(f"{_BUILD_PATH}/tmp/{_MACHINE}/u-boot/sm.bin")
+cp @(f"{_path}/{_CPU_MACHINE}/sm.bin") @(f"{_BUILD_PATH}/tmp/{_MACHINE}/su-boot/sm.bin")
+cp @(f"{_path}/{_CPU_MACHINE}/sm.bin") @(f"{_BUILD_PATH}/tmp/{_MACHINE}/u-boot/sm.bin")
 
 
 print("Fetch syna-preboot, OK", color=Color.WHITE, bg_color=BgColor.GREEN)
