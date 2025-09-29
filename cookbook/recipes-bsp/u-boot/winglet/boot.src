@@ -39,7 +39,7 @@ saveenv
 # loads the kernel and the initramfs
 mmc dev 0
 fatload mmc 0:7 ${kernel_addr_r} Image
-fatload mmc 0:7 ${fdt_addr_r} dolphin-rdk.dtb
+fatload mmc 0:7 ${fdt_addr_r} sl1680-winglet.dtb
 fatload mmc 0:7 ${ramdisk_addr_r} initramfs.cpio.gz
 env set ramdisk_size ${filesize}
 
