@@ -199,7 +199,7 @@ with open(f"{_DEPLOY_DIR}/metadata_rootfs.txt", "r") as f:
 
 
 # replace the emmc_part_list.template with the actual rootfs size
-with open(f"{_path}/eMMCimg/emmc_part_list.template", 'r') as file:
+with open(f"{_path}/eMMCimg_{_MACHINE}/emmc_part_list.template", 'r') as file:
     _filedata = file.read()
     _filedata = _filedata.replace('{{ROOTFS_SIZE}}', str(_TOTAL_SIZE_MB))
 
