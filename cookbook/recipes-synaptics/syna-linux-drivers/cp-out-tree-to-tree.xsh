@@ -43,6 +43,11 @@ _TARGET = f"{_BUILD_PATH}/tmp/{_MACHINE}/linux/drivers/synaptics"
 
 
 mkdir -p @(f"{_TARGET}")
+
+# make sure to cleanup any existing .git folder
+if os.path.exists(f"{_TARGET}/.git"):
+    sudo rm -rf @(f"{_TARGET}/.git")
+
 # cp recursive all from inside _REPO to _TARGET
 cp -r @(f"{_REPO}/.") @(f"{_TARGET}")
 
