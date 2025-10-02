@@ -40,18 +40,28 @@ os.environ['IMAGE_MNT_BOOT'] = _IMAGE_MNT_BOOT
 os.environ['IMAGE_MNT_ROOT'] = _IMAGE_MNT_ROOT
 
 # Toradex already have the feeds
-mkdir -p @(_IMAGE_MNT_ROOT)/etc/apt/preferences.d
-cp @(_path)/files/toradex-feeds \
-    @(_IMAGE_MNT_ROOT)/etc/apt/preferences.d/toradex-feeds
-
-mkdir -p @(_IMAGE_MNT_ROOT)/etc/apt/sources.list.d
-cp @(_path)/files/bookworm-backports.sources \
-    @(_IMAGE_MNT_ROOT)/etc/apt/sources.list.d/bookworm-backports.sources
-
+sudo mkdir -p @(_IMAGE_MNT_ROOT)/etc/apt/preferences.d
+sudo mkdir -p @(_IMAGE_MNT_ROOT)/etc/apt/sources.list.d
 # get the key
-mkdir -p @(_IMAGE_MNT_ROOT)/usr/share/keyrings
-wget -O- https://feeds.toradex.com/stable/sl1680/toradex-debian-repo-07102024.gpg \
-    | gpg --dearmor \
-    | tee @(_IMAGE_MNT_ROOT)/usr/share/keyrings/toradex-debian-repo.gpg
+sudo mkdir -p @(_IMAGE_MNT_ROOT)/usr/share/keyrings
+
+str_cmd = (
+    f"sudo -k "
+    f"chroot {IMAGE_MNT_ROOT} /bin/bash -c \""
+    f"apt-get update && apt-get install -y gnupg2 curl && \
+        curl -fsSL https://feeds.toradex.com/stable/sl1680/toradex-debian-repo-07102024.gpg | gpg --dearmor > /usr/share/keyrings/toradex-debian-repo.gpg"
+    f"\""
+)
+
+_cmds = [str_cmd1, str_cmd]
+
+for cmd in _cmds:
+    subprocess.run(
+        cmd,
+        shell=True,
+        check=True,
+        executable="/bin/bash",
+        env=os.environ
+    )
 
 print("Adding custom feed sources, OK", color=Color.WHITE, bg_color=BgColor.GREEN)
