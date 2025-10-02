@@ -1,0 +1,12 @@
+{
+    "name": "debian-bookworm",
+    "type": "rootfs",
+    "priority": 1,
+    "support": [
+        "linux/amd64",
+        "linux/arm64"
+    ],
+    "beforeTargetDepsRecipes": [
+        "config-sources.xsh"
+    ]
+}
