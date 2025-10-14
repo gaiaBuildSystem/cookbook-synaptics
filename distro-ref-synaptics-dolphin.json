@@ -16,6 +16,7 @@
     ],
     "excludeRecipes": [
         "grub",
+        "u-boot-ram",
         "su-boot",
         "microsoft",
         "powershell",
