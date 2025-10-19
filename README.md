@@ -9,6 +9,15 @@
 
 This cookbook provides a collection of recipes to help you get started with DeimOS for Synaptics Astra.
 
+
+## Supported Boards -> Machines
+
+| Board                      | Gaia Machine Name   |
+|----------------------------|---------------------|
+| Synaptics Astra sl1680     | sl1680              |
+| Toradex Winglet SBC        | winglet             |
+
+
 ## Prerequisites
 
 - [Gaia project Gaia Core](https://github.com/gaiaBuildSystem/gaia);
@@ -27,9 +36,3 @@ This cookbook provides a collection of recipes to help you get started with Deim
 ```
 
 This will build DeimOS for Synaptics Astra sl1680.
-
-## Supported Boards -> Machines
-
-| Board                      | Gaia Machine Name   |
-|----------------------------|---------------------|
-| Astra sl1680 Core Module   | sl1680              |
