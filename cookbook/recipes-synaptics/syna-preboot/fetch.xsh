@@ -55,7 +55,11 @@ _CPU_MACHINE = _MACHINE
 
 cp @(f"{_path}/{_CPU_MACHINE}/preboot.subimg") @(f"{_BUILD_PATH}/tmp/{_MACHINE}/syna-preboot/preboot.subimg")
 cp @(f"{_path}/{_CPU_MACHINE}/tee.subimg") @(f"{_BUILD_PATH}/tmp/{_MACHINE}/syna-preboot/tee.subimg")
-cp @(f"{_path}/{_CPU_MACHINE}/sm.bin") @(f"{_BUILD_PATH}/tmp/{_MACHINE}/syna-preboot/sm.bin")
+
+# sl2619 does not have this sm.bin for example
+if os.path.exists(f"{_path}/{_CPU_MACHINE}/sm.bin"):
+    cp @(f"{_path}/{_CPU_MACHINE}/sm.bin") @(f"{_BUILD_PATH}/tmp/{_MACHINE}/syna-preboot/sm.bin")
+
 mkdir -p @(f"{_BUILD_PATH}/tmp/{_MACHINE}/output_sm/bin")
 mkdir -p @(f"{_BUILD_PATH}/tmp/{_MACHINE}/su-boot")
 mkdir -p @(f"{_BUILD_PATH}/tmp/{_MACHINE}/u-boot")
