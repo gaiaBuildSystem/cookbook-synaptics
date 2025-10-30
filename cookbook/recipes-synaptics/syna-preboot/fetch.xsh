@@ -63,8 +63,11 @@ if os.path.exists(f"{_path}/{_CPU_MACHINE}/sm.bin"):
 mkdir -p @(f"{_BUILD_PATH}/tmp/{_MACHINE}/output_sm/bin")
 mkdir -p @(f"{_BUILD_PATH}/tmp/{_MACHINE}/su-boot")
 mkdir -p @(f"{_BUILD_PATH}/tmp/{_MACHINE}/u-boot")
-cp @(f"{_path}/{_CPU_MACHINE}/sm.bin") @(f"{_BUILD_PATH}/tmp/{_MACHINE}/su-boot/sm.bin")
-cp @(f"{_path}/{_CPU_MACHINE}/sm.bin") @(f"{_BUILD_PATH}/tmp/{_MACHINE}/u-boot/sm.bin")
+
+# sl2619 does not have this sm.bin
+if os.path.exists(f"{_path}/{_CPU_MACHINE}/sm.bin"):
+    cp @(f"{_path}/{_CPU_MACHINE}/sm.bin") @(f"{_BUILD_PATH}/tmp/{_MACHINE}/su-boot/sm.bin")
+    cp @(f"{_path}/{_CPU_MACHINE}/sm.bin") @(f"{_BUILD_PATH}/tmp/{_MACHINE}/u-boot/sm.bin")
 
 
 print("Fetch syna-preboot, OK", color=Color.WHITE, bg_color=BgColor.GREEN)
