@@ -53,6 +53,13 @@ elif os.environ["MACHINE"] == "winglet":
         @(_BUILD_PATH)/tmp/@(_MACHINE)/linux/arch/arm64/boot/dts/synaptics/sl1680-winglet.dtb \
         @(_IMAGE_MNT_BOOT)/
 
+elif os.environ["MACHINE"] == "sl2619":
+    # copy the device tree blob
+    sudo -k \
+        cp -f \
+        @(_BUILD_PATH)/tmp/@(_MACHINE)/linux/arch/arm64/boot/dts/synaptics/sl2619-rdk.dtb \
+        @(_IMAGE_MNT_BOOT)/
+
 else:
     Error_Out(
         f"Machine [{os.environ['MACHINE']}] is not supported",

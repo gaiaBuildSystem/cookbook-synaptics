@@ -1,0 +1,19 @@
+{
+    "name": "u-boot",
+    "type": "bootloader",
+    "support": [
+        "linux/arm64"
+    ],
+    "source": "https://github.com/gaiaBuildSystem/u-boot",
+    "hostDeps": [
+        "xxd"
+    ],
+    "ref": {
+        "linux/arm64": "770644e5ca09a4de71f51d53fdb50e91dc2303ce"
+    },
+    "deployRecipes": [
+        "astra-boot.xsh"
+    ],
+    "priority": 1,
+    "merge": true
+}
