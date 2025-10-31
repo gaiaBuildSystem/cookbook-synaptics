@@ -181,7 +181,10 @@ sudo cp @(_path)/@(f"eMMCimg_{_MACHINE}")/* @(_DEPLOY_DIR)/eMMCimg/
 
 sudo mv @(_DEPLOY_DIR)/bl.subimg.gz @(_DEPLOY_DIR)/eMMCimg/
 sudo mv @(_DEPLOY_DIR)/boot.subimg.gz @(_DEPLOY_DIR)/eMMCimg/
-sudo mv @(_DEPLOY_DIR)/fastlogo.subimg.gz @(_DEPLOY_DIR)/eMMCimg/
+
+# klamath does not have fastlogo (yet?)
+if _MACHINE == "winglet" or _MACHINE == "sl1680":
+    sudo mv @(_DEPLOY_DIR)/fastlogo.subimg.gz @(_DEPLOY_DIR)/eMMCimg/
 
 # copy the files that was wrote to the metadata
 _splitted_rootfs = []
