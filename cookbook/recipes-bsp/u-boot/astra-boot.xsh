@@ -88,6 +88,7 @@ if _chip_name == "dolphin":
     ./in_extras.py \
         "BOOT_LOADER" \
         @(f"{_REPO_PATH}")/in_uboot_extras.bin 0x00000001
+
 elif _chip_name == "klamath":
     # gen extras
     ./in_extras.py \
