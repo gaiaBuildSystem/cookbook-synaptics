@@ -69,13 +69,17 @@ cat @(f"{_REPO_PATH}")/uboot_prepending.bin @(f"{_REPO_PATH}")/uboot_raw.bin > @
 # mv @(f"{_REPO_PATH}")/uboot_raw_prepending.bin @(f"{_REPO_PATH}")/uboot_raw.bin
 
 _chip_name = "dolphin"
+_tool_version_arg = ""
+_binary2enc = "uboot_raw_prepending.bin"
 
 if _MACHINE == "winglet" or _MACHINE == "sl1680":
     _chip_name = "dolphin"
     _tool_version_arg = ""
+    _binary2enc = "uboot_raw_prepending.bin"
 elif _MACHINE == "sl2619":
     _chip_name = "klamath"
     _tool_version_arg = "--tool-version=genx_v3"
+    _binary2enc = "uboot_raw.bin"
 else:
     raise Error_Out(f"Unsupported MACHINE={_MACHINE} for astra u-boot signing")
 
@@ -105,7 +109,7 @@ sudo \
         --extras=@(f"{_REPO_PATH}")/in_uboot_extras.bin \
         --workdir-security-tools=@(f"{_REPO_TOOLS}/tools/bin") \
         --workdir-security-keys=@(f"{_path}/{_MACHINE}") \
-        --in_payload=@(f"{_REPO_PATH}")/uboot_raw_prepending.bin \
+        --in_payload=@(f"{_REPO_PATH}")/@(f"{_binary2enc}") \
         --out_store=@(f"{_DEPLOY_DIR}/uboot_en.bin")
 
 # bootloader.subimg
