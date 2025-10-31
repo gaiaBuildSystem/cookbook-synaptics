@@ -68,20 +68,40 @@ dd if=/dev/zero of=@(f"{_REPO_PATH}")/uboot_prepending.bin bs=1 count=48
 cat @(f"{_REPO_PATH}")/uboot_prepending.bin @(f"{_REPO_PATH}")/uboot_raw.bin > @(f"{_REPO_PATH}")/uboot_raw_prepending.bin
 # mv @(f"{_REPO_PATH}")/uboot_raw_prepending.bin @(f"{_REPO_PATH}")/uboot_raw.bin
 
-# create in_extras
-./in_extras.py \
-    "BOOT_LOADER" \
-    @(f"{_REPO_PATH}")/in_uboot_extras.bin 0x00000001
+_chip_name = "dolphin"
+
+if _MACHINE == "winglet" or _MACHINE == "sl1680":
+    _chip_name = "dolphin"
+    _tool_version_arg = ""
+elif _MACHINE == "sl2619":
+    _chip_name = "klamath"
+    _tool_version_arg = "--tool-version=genx_v3"
+else:
+    raise Error_Out(f"Unsupported MACHINE={_MACHINE} for astra u-boot signing")
+
+if _chip_name == "dolphin":
+    # create in_extras
+    ./in_extras.py \
+        "BOOT_LOADER" \
+        @(f"{_REPO_PATH}")/in_uboot_extras.bin 0x00000001
+elif _chip_name == "klamath":
+    # gen extras
+    ./in_extras.py \
+        "BOOT_LOADER_GENX_V3" \
+        @(f"{_REPO_PATH}")/in_uboot_extras.bin \
+        0x00000000 0x00000000 \
+        0x4100000 0x4100000
 
 # sign
 sudo \
     -E \
     ./gen_x_secure_image \
-        --chip-name=dolphin \
+        --chip-name=@(f"{_chip_name}") \
         --chip-rev=A0 \
         --img_type=BOOT_LOADER \
         --key_type=ree \
         --length=0x0 \
+        @(f"{_tool_version_arg}") \
         --extras=@(f"{_REPO_PATH}")/in_uboot_extras.bin \
         --workdir-security-tools=@(f"{_REPO_TOOLS}/tools/bin") \
         --workdir-security-keys=@(f"{_path}/{_MACHINE}") \
