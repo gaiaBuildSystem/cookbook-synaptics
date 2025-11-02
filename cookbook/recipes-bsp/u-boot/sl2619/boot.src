@@ -14,12 +14,11 @@ if env exists loglevel
         setenv loglevel 3
 fi
 
-# Memory layout for SL1680 - use Synaptics recommended addresses
 env set kernel_addr_r 0x7c00000
 env set ramdisk_addr_r 0xcf00000
 env set fdt_addr_r 0x10000000
-env set initrd_high 0xffffffffffffffff
-# env set fdt_high 0xffffffffffffffff
+env set bootm_low 0x0
+env set bootm_size 0x10000000
 
 env set bootargs root=LABEL:rootfs rootfstype=ext4
 env set bootargs ${bootargs} console=ttyS0,115200
@@ -38,5 +37,5 @@ fatload mmc 0:6 ${fdt_addr_r} sl2619-rdk.dtb
 fatload mmc 0:6 ${ramdisk_addr_r} initramfs.cpio.gz
 env set ramdisk_size ${filesize}
 
-# the device tree was already loaded by the rpi firmware
+# run the kernel
 booti ${kernel_addr_r} ${ramdisk_addr_r}:${ramdisk_size} ${fdt_addr_r}
