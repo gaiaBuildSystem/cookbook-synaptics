@@ -114,9 +114,13 @@ sudo \
         --out_store=@(f"{_DEPLOY_DIR}/uboot_en.bin")
 
 # bootloader.subimg
-sudo -E ./prepend_image_info.sh \
-        @(f"{_DEPLOY_DIR}/uboot_en.bin") \
-        @(f"{_DEPLOY_DIR}/bootloader_nopreload.subimg")
+if _chip_name == "dolphin":
+    sudo -E ./prepend_image_info.sh \
+            @(f"{_DEPLOY_DIR}/uboot_en.bin") \
+            @(f"{_DEPLOY_DIR}/bootloader_nopreload.subimg")
+
+elif _chip_name == "klamath":
+    sudo -E cp @(f"{_DEPLOY_DIR}/uboot_en.bin") @(f"{_DEPLOY_DIR}/bootloader_nopreload.subimg")
 
 # call the gen-container.sh
 sudo \
