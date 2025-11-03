@@ -14,11 +14,14 @@ if env exists loglevel
         setenv loglevel 3
 fi
 
+# synaptics does nasty stuff on their u-boot
+setenv skip_fdt_update 0x1f
+
 env set kernel_addr_r 0x7c00000
-env set ramdisk_addr_r 0xcf00000
-env set fdt_addr_r 0x10000000
-env set bootm_low 0x0
-env set bootm_size 0x10000000
+env set ramdisk_addr_r 0x30000000
+env set fdt_addr_r 0x5d166c40
+env set initrd_high 0xffffffffffffffff
+env set fdt_high 0xffffffffffffffff
 
 env set bootargs root=LABEL:rootfs rootfstype=ext4
 env set bootargs ${bootargs} console=ttyS0,115200
