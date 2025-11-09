@@ -1,0 +1,11 @@
+{
+    "name": "syna-shit",
+    "type": "init",
+    "priority": 0,
+    "support": [
+        "linux/arm64"
+    ],
+    "initramfsRecipes": [
+        "deployInit.sh"
+    ]
+}
