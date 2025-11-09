@@ -23,6 +23,6 @@
         "docker",
         "initramfs-php",
         "neofetch",
-        "simpla-splash"
+        "simple-splash"
     ]
 }
