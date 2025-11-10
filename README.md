@@ -3,7 +3,7 @@
 <p align="center">
     <img
         src="https://www.synaptics.com/sites/default/files/2024-11/sl1680-back.jpg"
-        alt="Rpi Logo"
+        alt="Synaptics Astra"
         width="500" />
 </p>
 
@@ -14,6 +14,7 @@ This cookbook provides a collection of recipes to help you get started with Deim
 
 | Board                      | Gaia Machine Name   |
 |----------------------------|---------------------|
+| Synaptics Astra sl2619     | sl2619              |
 | Synaptics Astra sl1680     | sl1680              |
 | Toradex Winglet SBC        | winglet             |
 
