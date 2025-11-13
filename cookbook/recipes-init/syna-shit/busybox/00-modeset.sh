@@ -9,6 +9,6 @@ if [[ $MACHINE == sl2619 ]]; then
 
 else
     echo "[initramfs] Synaptics modeset not needed"
-    exit 69
+    exit 0
 
 fi
