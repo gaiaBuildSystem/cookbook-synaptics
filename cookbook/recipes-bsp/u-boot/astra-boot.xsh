@@ -98,20 +98,35 @@ elif _chip_name == "klamath":
         0x4100000 0x4100000
 
 # sign
-sudo \
-    -E \
-    ./gen_x_secure_image \
-        --chip-name=@(f"{_chip_name}") \
-        --chip-rev=A0 \
-        --img_type=BOOT_LOADER \
-        --key_type=ree \
-        --length=0x0 \
-        @(f"{_tool_version_arg}") \
-        --extras=@(f"{_REPO_PATH}")/in_uboot_extras.bin \
-        --workdir-security-tools=@(f"{_REPO_TOOLS}/tools/bin") \
-        --workdir-security-keys=@(f"{_path}/{_MACHINE}") \
-        --in_payload=@(f"{_REPO_PATH}")/@(f"{_binary2enc}") \
-        --out_store=@(f"{_DEPLOY_DIR}/uboot_en.bin")
+if _tool_version_arg:
+    sudo \
+        -E \
+        ./gen_x_secure_image \
+            --chip-name=@(f"{_chip_name}") \
+            --chip-rev=A0 \
+            --img_type=BOOT_LOADER \
+            --key_type=ree \
+            --length=0x0 \
+            @(f"{_tool_version_arg}") \
+            --extras=@(f"{_REPO_PATH}")/in_uboot_extras.bin \
+            --workdir-security-tools=@(f"{_REPO_TOOLS}/tools/bin") \
+            --workdir-security-keys=@(f"{_path}/{_MACHINE}") \
+            --in_payload=@(f"{_REPO_PATH}")/@(f"{_binary2enc}") \
+            --out_store=@(f"{_DEPLOY_DIR}/uboot_en.bin")
+else:
+    sudo \
+        -E \
+        ./gen_x_secure_image \
+            --chip-name=@(f"{_chip_name}") \
+            --chip-rev=A0 \
+            --img_type=BOOT_LOADER \
+            --key_type=ree \
+            --length=0x0 \
+            --extras=@(f"{_REPO_PATH}")/in_uboot_extras.bin \
+            --workdir-security-tools=@(f"{_REPO_TOOLS}/tools/bin") \
+            --workdir-security-keys=@(f"{_path}/{_MACHINE}") \
+            --in_payload=@(f"{_REPO_PATH}")/@(f"{_binary2enc}") \
+            --out_store=@(f"{_DEPLOY_DIR}/uboot_en.bin")
 
 # bootloader.subimg
 if _chip_name == "dolphin":
