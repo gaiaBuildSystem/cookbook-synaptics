@@ -16,7 +16,7 @@ This cookbook provides a collection of recipes to help you get started with Deim
 |----------------------------|---------------------|
 | Synaptics Astra sl2619     | sl2619              |
 | Synaptics Astra sl1680     | sl1680              |
-| Toradex Winglet SBC        | winglet             |
+| Toradex Luna sl1680 SBC        | winglet             |
 
 
 ## Prerequisites
