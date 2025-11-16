@@ -51,10 +51,15 @@ if os.path.exists(f"{_REPO_PATH}/fastlogo.subimg.gz"):
     rm @(_REPO_PATH)/fastlogo.subimg.gz
     sudo rm @(_DEPLOY_DIR)/fastlogo.subimg.gz
 
+_splash_img = "splash.bmp"
+
+if _MACHINE == "winglet":
+    _splash_img = "splash-winglet.bmp"
+
 # now create the fastlogo
 os.chdir(f"{_REPO_TOOLS}/tools/bin")
 ./create_fastlogo.sh \
-    -i @(_path)/splash.bmp \
+    -i @(_path)/@(_splash_img) \
     -o @(f"{_REPO_PATH}")/fastlogo.subimg
 
 # the synaptics creates the fastlogo.subimg already zipped
