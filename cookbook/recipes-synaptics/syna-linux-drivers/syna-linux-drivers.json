@@ -7,7 +7,7 @@
     ],
     "source": "https://github.com/gaiaBuildSystem/syna-linux-drivers.git",
     "ref": {
-        "linux/arm64": "12bf502c622539d3819c01944317f8945c2e4dca"
+        "linux/arm64": "f6fb1e49e166a0753ad1db10b54ca1c5253098d5"
     },
     "hostDeps": [
         "git"
