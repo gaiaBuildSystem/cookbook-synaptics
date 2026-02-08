@@ -1,0 +1,34 @@
+{
+    "name": "custom-feed",
+    "type": "config",
+    "priority": 1,
+    "support": [
+        "linux/amd64",
+        "linux/arm64"
+    ],
+    "customData": {
+        "luna": {
+            "feeds": [
+                {
+                    "name": "backports",
+                    "feedUrl": "deb.debian.org/debian",
+                    "feedUri": "http://deb.debian.org/debian",
+                    "suites": "bookworm-backports",
+                    "components": "main",
+                    "gpgKeyUrl": "https://ftp.debian.org/debian/dists/bookworm-backports/Release.gpg",
+                    "pinPriority": 500
+                },
+                {
+                    "name": "toradex",
+                    "feedUrl": "feeds.toradex.com",
+                    "feedUri": "https://feeds.toradex.com/stable/sl1680/snapshots/20260205T204032Z",
+                    "suites": "stable",
+                    "components": "main non-free",
+                    "gpgKeyUrl": "https://feeds.toradex.com/stable/sl1680/toradex-debian-repo-07102024.asc",
+                    "pinPriority": 900
+                }
+            ]
+        }
+    },
+    "merge": true
+}
