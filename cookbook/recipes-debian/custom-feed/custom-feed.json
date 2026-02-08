@@ -15,7 +15,7 @@
                     "feedUri": "http://deb.debian.org/debian",
                     "suites": "bookworm-backports",
                     "components": "main",
-                    "gpgKeyUrl": "https://ftp.debian.org/debian/dists/bookworm-backports/Release.gpg",
+                    "gpgKeyUrl": "https://ftp-master.debian.org/keys/archive-key-12.asc",
                     "pinPriority": 500
                 },
                 {
