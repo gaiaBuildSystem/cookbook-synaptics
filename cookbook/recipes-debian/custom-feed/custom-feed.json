@@ -16,6 +16,7 @@
                     "suites": "bookworm-backports",
                     "components": "main",
                     "gpgKeyUrl": "https://ftp-master.debian.org/keys/archive-key-12.asc",
+                    "pin": "release n=bookworm-backports",
                     "pinPriority": 700
                 },
                 {
@@ -25,6 +26,7 @@
                     "suites": "stable",
                     "components": "main non-free",
                     "gpgKeyUrl": "https://feeds.toradex.com/stable/sl1680/toradex-debian-repo-07102024.asc",
+                    "pin": "origin feeds.toradex.com",
                     "pinPriority": 900
                 }
             ]
