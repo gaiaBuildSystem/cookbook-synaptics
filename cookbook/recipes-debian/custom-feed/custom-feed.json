@@ -16,7 +16,7 @@
                     "suites": "bookworm-backports",
                     "components": "main",
                     "gpgKeyUrl": "https://ftp-master.debian.org/keys/archive-key-12.asc",
-                    "pinPriority": 500
+                    "pinPriority": 700
                 },
                 {
                     "name": "toradex",
