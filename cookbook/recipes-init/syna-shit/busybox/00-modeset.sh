@@ -2,7 +2,7 @@
 
 if [[ $MACHINE == sl2619 ]]; then
     echo "[initramfs] Synaptics modeset"
-    /bin/fbset -g 1920 1080 1920 1080 32
+    /bin/drmset 0
 
     # let's settle
     sleep 4
