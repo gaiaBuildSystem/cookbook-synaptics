@@ -9,7 +9,7 @@
         "xxd"
     ],
     "ref": {
-        "linux/arm64": "e3d37bc09e6bf45df9c924600865c5f72a2ba4c2"
+        "linux/arm64": "8903935c465fcdc2a3678b358355b86523008475"
     },
     "deployRecipes": [
         "astra-boot.xsh"
