@@ -15,7 +15,7 @@ if env exists loglevel
 fi
 
 # this prevents the su-boot to mess up with the mmc
-env set skip_fdt_update 0x2
+env set skip_fdt_update 0x10
 
 # Memory layout for SL1680 - use Synaptics recommended addresses
 env set kernel_addr_r 0x7c00000
