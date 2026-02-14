@@ -6292,6 +6292,10 @@ CONFIG_ARCH_USE_MEMTEST=y
 # end of Rust hacking
 # end of Kernel hacking
 
+# npu AI
+CONFIG_SYNAPTICS_NPU=y
+CONFIG_SYNAPTICS_VIS_NPU=y
+
 # Behälter
 CONFIG_LOCALVERSION="-{{dName}}-v{{v1}}.{{v2}}.{{v3}}"
 # CONFIG_LOCALVERSION_AUTO is not set
