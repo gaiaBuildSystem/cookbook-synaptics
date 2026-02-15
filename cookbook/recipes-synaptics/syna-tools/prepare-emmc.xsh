@@ -103,9 +103,7 @@ finally:
     # always unmount
     sudo umount @(_TEMP_MNT) || true
     sudo rmdir @(_TEMP_MNT) || true
-    # check the disk for potential errors and fix it automatically
-    # use the image file directly instead of loop device
-    sudo fsck.ext4 -y -f -v @(_ROOTFS_IMG)
+
 
 # optionally compress the image
 _ROOTFS_IMG_GZ = f"{_ROOTFS_IMG}.gz"
