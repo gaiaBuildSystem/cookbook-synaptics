@@ -27,6 +27,7 @@ _DISTRO_MAJOR = os.environ.get('DISTRO_MAJOR')
 _DISTRO_MINOR = os.environ.get('DISTRO_MINOR')
 _DISTRO_PATCH = os.environ.get('DISTRO_PATCH')
 _USER_PASSWD = os.environ.get('USER_PASSWD')
+_DISTRO_VARIANT = os.environ.get('DISTRO_VARIANT')
 
 # read the meta data
 meta = json.loads(os.environ.get('META', '{}'))
@@ -73,7 +74,7 @@ sudo mount -o loop @(_ROOTFS_IMG) @(_TEMP_MNT)
 try:
     # copy rootfs content excluding virtual filesystems
     print("Copying rootfs content to image (excluding virtual filesystems)...", color=Color.WHITE, bg_color=BgColor.BLUE)
-    sudo rsync -av \
+    sudo rsync -aHS \
         --exclude=/proc \
         --exclude=/sys \
         --exclude=/dev \
@@ -82,16 +83,17 @@ try:
         --exclude=/lost+found \
         @(f"{_IMAGE_MNT_ROOT}/") @(f"{_TEMP_MNT}/")
 
-    # create essential empty directories in the new rootfs
-    sudo mkdir -p @(f"{_TEMP_MNT}/proc")
-    sudo mkdir -p @(f"{_TEMP_MNT}/sys")
-    sudo mkdir -p @(f"{_TEMP_MNT}/dev")
-    sudo mkdir -p @(f"{_TEMP_MNT}/run")
-    sudo mkdir -p @(f"{_TEMP_MNT}/tmp")
+    if _DISTRO_VARIANT != "bootc":
+        # create essential empty directories in the new rootfs
+        sudo mkdir -p @(f"{_TEMP_MNT}/proc")
+        sudo mkdir -p @(f"{_TEMP_MNT}/sys")
+        sudo mkdir -p @(f"{_TEMP_MNT}/dev")
+        sudo mkdir -p @(f"{_TEMP_MNT}/run")
+        sudo mkdir -p @(f"{_TEMP_MNT}/tmp")
 
-    # set proper permissions
-    sudo chmod 1777 @(f"{_TEMP_MNT}/tmp")
-    sudo chmod 755 @(f"{_TEMP_MNT}/proc") @(f"{_TEMP_MNT}/sys") @(f"{_TEMP_MNT}/dev") @(f"{_TEMP_MNT}/run")
+        # set proper permissions
+        sudo chmod 1777 @(f"{_TEMP_MNT}/tmp")
+        sudo chmod 755 @(f"{_TEMP_MNT}/proc") @(f"{_TEMP_MNT}/sys") @(f"{_TEMP_MNT}/dev") @(f"{_TEMP_MNT}/run")
 
     sync  # ensure all data is written
     print("Rootfs image created successfully", color=Color.WHITE, bg_color=BgColor.BLUE)
