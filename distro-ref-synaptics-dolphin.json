@@ -24,5 +24,6 @@
         "initramfs-php",
         "neofetch",
         "simple-splash"
-    ]
+    ],
+    "$schema": "./schema/distro.json"
 }

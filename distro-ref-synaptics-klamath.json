@@ -26,5 +26,6 @@
         "syna-fastlogo",
         "recipes-toradex",
         "simple-splash"
-    ]
+    ],
+    "$schema": "./schema/distro.json"
 }
