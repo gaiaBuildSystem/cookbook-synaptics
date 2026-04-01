@@ -72,7 +72,7 @@ _chip_name = "dolphin"
 _tool_version_arg = ""
 _binary2enc = "uboot_raw_prepending.bin"
 
-if _MACHINE == "luna" or _MACHINE == "sl1680":
+if _MACHINE == "luna" or _MACHINE == "luna-upstream" or _MACHINE == "sl1680":
     _chip_name = "dolphin"
     _tool_version_arg = ""
     _binary2enc = "uboot_raw_prepending.bin"

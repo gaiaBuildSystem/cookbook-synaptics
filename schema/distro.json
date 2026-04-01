@@ -13,7 +13,8 @@
             "enum": [
                 "sl1680",
                 "sl2619",
-                "luna"
+                "luna",
+                "luna-upstream"
             ]
         }
     }

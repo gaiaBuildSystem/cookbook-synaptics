@@ -46,7 +46,7 @@ if os.environ["MACHINE"] == "sl1680":
         @(_BUILD_PATH)/tmp/@(_MACHINE)/linux/arch/arm64/boot/dts/synaptics/dolphin-rdk.dtb \
         @(_IMAGE_MNT_BOOT)/
 
-elif os.environ["MACHINE"] == "luna":
+elif os.environ["MACHINE"] == "luna" or os.environ["MACHINE"] == "luna-upstream":
     # copy the device tree blob
     sudo -k \
         cp -f \

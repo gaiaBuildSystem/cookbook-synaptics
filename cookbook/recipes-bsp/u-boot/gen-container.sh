@@ -8,7 +8,7 @@ bootloader_append_size=`expr 512 - ${bootloader_subimg_size} % 512`
 
 cp ${_DEPLOY_DIR}/bootloader_nopreload.subimg ${_DEPLOY_DIR}/bootloader.subimg
 
-if [ "$MACHINE" == "luna" ] || [ "$MACHINE" == "sl1680" ]; then
+if [ "$MACHINE" == "luna" ] || [ "$MACHINE" == "luna-upstream" ] || [ "$MACHINE" == "sl1680" ]; then
     if [ ${bootloader_append_size} -lt 512 ]; then
         dd if=/dev/zero of=${_DEPLOY_DIR}/bootloader.subimg bs=1 seek=${bootloader_subimg_size} count=${bootloader_append_size} conv=notrunc
     fi

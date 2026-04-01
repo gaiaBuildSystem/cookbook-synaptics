@@ -30,6 +30,30 @@
                     "pinPriority": 900
                 }
             ]
+        },
+        "luna-upstream": {
+            "feeds": [
+                {
+                    "name": "backports",
+                    "feedUrl": "deb.debian.org/debian",
+                    "feedUri": "http://deb.debian.org/debian",
+                    "suites": "bookworm-backports",
+                    "components": "main",
+                    "gpgKeyUrl": "https://ftp-master.debian.org/keys/archive-key-12.asc",
+                    "pin": "release n=bookworm-backports",
+                    "pinPriority": 700
+                },
+                {
+                    "name": "toradex",
+                    "feedUrl": "feeds.toradex.com",
+                    "feedUri": "https://feeds.toradex.com/stable/sl1680/snapshots/20260205T204032Z",
+                    "suites": "stable",
+                    "components": "main non-free",
+                    "gpgKeyUrl": "https://feeds.toradex.com/stable/sl1680/toradex-debian-repo-07102024.asc",
+                    "pin": "origin feeds.toradex.com",
+                    "pinPriority": 900
+                }
+            ]
         }
     },
     "merge": true
