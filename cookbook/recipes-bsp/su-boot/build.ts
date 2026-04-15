@@ -66,7 +66,7 @@ function compileBootScript (): void {
 }
 
 // set the working directory
-process.chdir(`${BUILD_PATH}/tmp/${MACHINE}/su-boot`)
+process.chdir(`${BUILD_PATH}/tmp/${MACHINE}/su-boot-usb`)
 
 // replace the defconfig
 logger.info(`Parsing defconfig ${_getAssetPath(`${MACHINE}/${MACHINE}_defconfig.template`)} ...`)
@@ -75,7 +75,7 @@ const _defconfig = FS.readFileSync(_getAssetPath(`${MACHINE}/${MACHINE}_defconfi
     .replace(/{{v1}}/g, DISTRO_MAJOR)
     .replace(/{{v2}}/g, DISTRO_MINOR)
     .replace(/{{v3}}/g, DISTRO_PATCH)
-FS.writeFileSync(`${BUILD_PATH}/tmp/${MACHINE}/su-boot/configs/${MACHINE}_defconfig`, _defconfig)
+FS.writeFileSync(`${BUILD_PATH}/tmp/${MACHINE}/su-boot-usb/configs/${MACHINE}_defconfig`, _defconfig)
 logger.success(`defconfig ${MACHINE}_defconfig parsed`)
 
 // build

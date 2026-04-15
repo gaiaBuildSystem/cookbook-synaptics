@@ -4,7 +4,7 @@ services:
     image: docker.io/pergamos/bsp-builder:latest
     user: ${GUSER_ID}:${GGROUP_ID}
     volumes:
-      - ${BUILD_PATH}/tmp/${MACHINE}/su-boot:/source
+      - ${BUILD_PATH}/tmp/${MACHINE}/su-boot-usb:/source
       - ${ORIGIN_PATH}:/assets
     command:
       make
@@ -16,7 +16,7 @@ services:
     image: docker.io/pergamos/bsp-builder:latest
     user: ${GUSER_ID}:${GGROUP_ID}
     volumes:
-      - ${BUILD_PATH}/tmp/${MACHINE}/su-boot:/source
+      - ${BUILD_PATH}/tmp/${MACHINE}/su-boot-usb:/source
       - ${ORIGIN_PATH}:/assets
     command:
       make
@@ -27,7 +27,7 @@ services:
     image: docker.io/pergamos/bsp-builder:latest
     user: ${GUSER_ID}:${GGROUP_ID}
     volumes:
-      - ${BUILD_PATH}/tmp/${MACHINE}/su-boot:/source
+      - ${BUILD_PATH}/tmp/${MACHINE}/su-boot-usb:/source
       - ${ORIGIN_PATH}:/assets
     command:
       mkimage -A ${MIN_ARCH}
