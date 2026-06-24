@@ -22,7 +22,8 @@ env set kernel_addr_r 0x7c00000
 env set ramdisk_addr_r 0xcf00000
 env set fdt_addr_r 0x10000000
 env set initrd_high 0xffffffffffffffff
-env set cma 524288000@1556086784
+# env set cma 524288000@1556086784
+env set cma 524288000@0x5e000000
 # env set fdt_high 0xffffffffffffffff
 
 env set bootargs root=LABEL:rootfs rootfstype=ext4
