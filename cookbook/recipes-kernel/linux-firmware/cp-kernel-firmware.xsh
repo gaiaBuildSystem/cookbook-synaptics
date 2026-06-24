@@ -41,7 +41,7 @@ os.environ['IMAGE_MNT_ROOT'] = _IMAGE_MNT_ROOT
 _LINUX_PATH = f"{_BUILD_PATH}/tmp/{_MACHINE}/linux/firmware"
 
 
-if _MACHINE == "sl1680" or _MACHINE == "luna" or _MACHINE == "luna-upstream":
+if _MACHINE == "astra-sl1680" or _MACHINE == "luna":
 
     # copy the linux/firmware/* to /lib/firmware
     sudo mkdir -p @(_IMAGE_MNT_ROOT)/lib/firmware

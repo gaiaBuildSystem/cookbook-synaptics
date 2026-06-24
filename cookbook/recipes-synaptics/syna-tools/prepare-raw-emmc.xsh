@@ -154,7 +154,7 @@ sudo cp @(_path)/@(f"eMMCimg_{_MACHINE}")/*.subimg.gz @(_EMMC_WORK_DIR)/
 # bl.subimg.gz (and fastlogo.subimg.gz) are produced by the build and land in DEPLOY_DIR
 sudo mv @(_DEPLOY_DIR)/bl.subimg.gz @(_EMMC_WORK_DIR)/
 
-if _MACHINE == "luna" or _MACHINE == "luna-upstream" or _MACHINE == "sl1680":
+if _MACHINE == "luna" or _MACHINE == "astra-sl1680":
     sudo mv @(_DEPLOY_DIR)/fastlogo.subimg.gz @(_EMMC_WORK_DIR)/
 
 # Parse emmc_part_list.template substituting the actual rootfs size

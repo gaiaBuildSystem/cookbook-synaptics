@@ -1,6 +1,6 @@
 #!/bin/busybox sh
 
-if [[ $MACHINE == sl2619 ]]; then
+if [[ $MACHINE == astra-sl2619 ]]; then
     echo "[initramfs] Synaptics modeset"
     /bin/drmset 0
 

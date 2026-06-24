@@ -15,8 +15,8 @@ This cookbook provides a collection of recipes to help you get started with Deim
 | Board                      | Gaia Machine Name   |
 |----------------------------|---------------------|
 | Toradex Luna sl1680 SBC    | luna                |
-| Synaptics Astra sl2619     | sl2619              |
-| Synaptics Astra sl1680     | sl1680              |
+| Synaptics Astra sl2619     | astra-sl2619              |
+| Synaptics Astra sl1680     | astra-sl1680        |
 
 
 ## Prerequisites
@@ -26,7 +26,7 @@ This cookbook provides a collection of recipes to help you get started with Deim
 ## Build an Image
 
 ```bash
-./gaia/bitcook --buildPath /home/user/workdir --distro ./cookbook-synaptics/distro-ref-astra-dolphin.json --noCache
+./gaia/bitcook --buildPath /home/user/workdir --distro ./cookbook-synaptics/distro-ref-astra-sl1680.json --noCache
 ```
 
-This will build DeimOS for Synaptics Astra sl1680.
+This will build DeimOS for Synaptics Astra astra-sl1680.

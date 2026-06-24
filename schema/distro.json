@@ -11,10 +11,9 @@
             "description": "The machine type",
             "type": "string",
             "enum": [
-                "sl1680",
-                "sl2619",
                 "luna",
-                "luna-upstream"
+                "astra-sl1680",
+                "astra-sl2619"
             ]
         }
     }

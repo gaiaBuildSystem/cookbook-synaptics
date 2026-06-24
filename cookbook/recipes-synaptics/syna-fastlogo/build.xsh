@@ -53,7 +53,7 @@ if os.path.exists(f"{_REPO_PATH}/fastlogo.subimg.gz"):
 
 _splash_img = "splash.bmp"
 
-if _MACHINE == "luna" or _MACHINE == "luna-upstream":
+if _MACHINE == "luna":
     _splash_img = "splash-luna.bmp"
 
 # now create the fastlogo

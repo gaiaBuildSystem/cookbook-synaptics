@@ -1,6 +1,6 @@
 {
     "name": "DeimOS-Reference",
-    "machine": "sl2619",
+    "machine": "astra-sl1680",
     "arch": "linux/arm64",
     "version": {
         "major": 0,
@@ -23,8 +23,6 @@
         "docker",
         "initramfs-php",
         "neofetch",
-        "syna-fastlogo",
-        "recipes-toradex",
         "simple-splash"
     ],
     "$schema": "./schema/distro.json"

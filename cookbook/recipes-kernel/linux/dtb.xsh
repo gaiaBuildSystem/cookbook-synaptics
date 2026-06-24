@@ -39,21 +39,21 @@ _IMAGE_MNT_ROOT = f"{_BUILD_PATH}/tmp/{_MACHINE}/mnt/root"
 os.environ['IMAGE_MNT_BOOT'] = _IMAGE_MNT_BOOT
 os.environ['IMAGE_MNT_ROOT'] = _IMAGE_MNT_ROOT
 
-if os.environ["MACHINE"] == "sl1680":
+if os.environ["MACHINE"] == "astra-sl1680":
     # copy the device tree blob
     sudo -k \
         cp -f \
         @(_BUILD_PATH)/tmp/@(_MACHINE)/linux/arch/arm64/boot/dts/synaptics/dolphin-rdk.dtb \
         @(_IMAGE_MNT_BOOT)/
 
-elif os.environ["MACHINE"] == "luna" or os.environ["MACHINE"] == "luna-upstream":
+elif os.environ["MACHINE"] == "luna":
     # copy the device tree blob
     sudo -k \
         cp -f \
         @(_BUILD_PATH)/tmp/@(_MACHINE)/linux/arch/arm64/boot/dts/synaptics/sl1680-winglet.dtb \
         @(_IMAGE_MNT_BOOT)/
 
-elif os.environ["MACHINE"] == "sl2619":
+elif os.environ["MACHINE"] == "astra-sl2619":
     # copy the device tree blob
     sudo -k \
         cp -f \

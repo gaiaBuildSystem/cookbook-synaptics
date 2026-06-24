@@ -31,7 +31,7 @@
                 }
             ]
         },
-        "luna-upstream": {
+        "astra-sl1680": {
             "feeds": [
                 {
                     "name": "backports",

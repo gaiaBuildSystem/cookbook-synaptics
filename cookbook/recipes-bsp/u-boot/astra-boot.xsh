@@ -72,11 +72,11 @@ _chip_name = "dolphin"
 _tool_version_arg = ""
 _binary2enc = "uboot_raw_prepending.bin"
 
-if _MACHINE == "luna" or _MACHINE == "luna-upstream" or _MACHINE == "sl1680":
+if _MACHINE == "luna" or _MACHINE == "astra-sl1680":
     _chip_name = "dolphin"
     _tool_version_arg = ""
     _binary2enc = "uboot_raw_prepending.bin"
-elif _MACHINE == "sl2619":
+elif _MACHINE == "astra-sl2619":
     _chip_name = "klamath"
     _tool_version_arg = "--tool-version=genx_v3"
     _binary2enc = "uboot_raw.bin"

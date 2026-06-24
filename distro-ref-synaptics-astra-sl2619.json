@@ -1,6 +1,6 @@
 {
     "name": "DeimOS-Reference",
-    "machine": "luna-upstream",
+    "machine": "astra-sl2619",
     "arch": "linux/arm64",
     "version": {
         "major": 0,
@@ -23,6 +23,8 @@
         "docker",
         "initramfs-php",
         "neofetch",
+        "syna-fastlogo",
+        "recipes-toradex",
         "simple-splash"
     ],
     "$schema": "./schema/distro.json"
