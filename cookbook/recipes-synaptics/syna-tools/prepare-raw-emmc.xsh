@@ -23,6 +23,7 @@ _ARCH = os.environ.get('ARCH')
 _MACHINE = os.environ.get('MACHINE')
 _MAX_IMG_SIZE = os.environ.get('MAX_IMG_SIZE')
 _BUILD_PATH = os.environ.get('BUILD_PATH')
+_DISTRO_NAME = os.environ.get('DISTRO_NAME')
 _DISTRO_MAJOR = os.environ.get('DISTRO_MAJOR')
 _DISTRO_MINOR = os.environ.get('DISTRO_MINOR')
 _DISTRO_PATCH = os.environ.get('DISTRO_PATCH')
@@ -183,7 +184,7 @@ _TOTAL_EMMC_MB = 1 + sum(_sz for _, _sz in _partitions) + 1
 print(f"Raw eMMC image size: {_TOTAL_EMMC_MB}MB ({len(_partitions)} GPT partitions)", color=Color.WHITE, bg_color=BgColor.BLUE)
 
 # Create the zeroed raw image file
-_RAW_EMMC_IMG = f"{_DEPLOY_DIR}/emmc.img"
+_RAW_EMMC_IMG = f"{_DEPLOY_DIR}/{_DISTRO_NAME}-{_MACHINE}-emmc-{_DISTRO_MAJOR}-{_DISTRO_MINOR}-{_DISTRO_PATCH}.img"
 sudo dd if=/dev/zero of=@(_RAW_EMMC_IMG) bs=1M count=@(_TOTAL_EMMC_MB) status=progress
 
 # Build GPT partition table with sgdisk
