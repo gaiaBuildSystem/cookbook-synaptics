@@ -139,6 +139,10 @@ finally:
     sudo rmdir @(_TEMP_BOOT_MNT) || true
 
 
+# make sure that we had the deploy/eMMCimg folder created by the build
+sudo mkdir -p @(_DEPLOY_DIR)/eMMCimg
+sudo cp @(_path)/@(f"eMMCimg_{_MACHINE}")/* @(_DEPLOY_DIR)/eMMCimg/
+
 # --- RAW eMMC IMAGE ASSEMBLY ---
 # Build a single raw image containing all GPT partitions populated with
 # the pre-built sub-images and the rootfs/boot we just created above.
