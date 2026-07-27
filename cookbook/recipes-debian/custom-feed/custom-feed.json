@@ -22,7 +22,7 @@
                 {
                     "name": "toradex",
                     "feedUrl": "feeds.toradex.com",
-                    "feedUri": "https://feeds.toradex.com/stable/sl1680/snapshots/20260205T204032Z",
+                    "feedUri": "https://feeds.toradex.com/stable/sl1680/snapshots/20260610T112653Z",
                     "suites": "stable",
                     "components": "main non-free",
                     "gpgKeyUrl": "https://feeds.toradex.com/stable/sl1680/toradex-debian-repo-07102024.asc",
@@ -46,7 +46,7 @@
                 {
                     "name": "toradex",
                     "feedUrl": "feeds.toradex.com",
-                    "feedUri": "https://feeds.toradex.com/stable/sl1680/snapshots/20260205T204032Z",
+                    "feedUri": "https://feeds.toradex.com/stable/sl1680/snapshots/20260610T112653Z",
                     "suites": "stable",
                     "components": "main non-free",
                     "gpgKeyUrl": "https://feeds.toradex.com/stable/sl1680/toradex-debian-repo-07102024.asc",
